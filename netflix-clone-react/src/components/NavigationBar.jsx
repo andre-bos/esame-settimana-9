@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Nav} from 'react-bootstrap'
-import logo from '../img/logo.png';
+import logo from '../assets/logo.png';
 import { FaBell, FaSearch, FaUser } from "react-icons/fa";
 
 export default function NavigationBar() {

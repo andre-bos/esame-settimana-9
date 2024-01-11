@@ -2,7 +2,9 @@ import './App.css';
 import NavigationBar from './components/NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyGenres from './components/MyGenres';
-import MyGallery from './components/MyGallery';
+import TrendingComp from './components/TrendingComp';
+import WatchAgain from './components/WatchAgain';
+import AppFooter from './components/AppFooter';
 
 document.body.style.backgroundColor = "rgb(33, 37, 41)";
 
@@ -14,8 +16,12 @@ function App() {
       </header>
       <main>
         <MyGenres />
-        <MyGallery />
+        <TrendingComp />
+        <WatchAgain />
       </main>
+      <footer>
+        <AppFooter />
+      </footer>
     </div>
   );
 }
