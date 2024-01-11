@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Dropdown } from "react-bootstrap";
 import { FaThLarge, FaTh } from "react-icons/fa";
 
-export default function myGenres() {
+export default function Generi() {
   return (
     <Container fluid>
         <div className="d-flex justify-content-between">

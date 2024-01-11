@@ -1,7 +1,7 @@
 import './App.css';
 import NavigationBar from './components/NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyGenres from './components/MyGenres';
+import MyGenres from './components/Generi';
 import TrendingComp from './components/TrendingComp';
 import WatchAgain from './components/WatchAgain';
 import AppFooter from './components/AppFooter';
