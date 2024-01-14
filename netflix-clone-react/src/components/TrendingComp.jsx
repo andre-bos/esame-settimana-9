@@ -36,7 +36,7 @@ export default class TrendingComp extends Component {
 
             {this.state.filmPosters.map(f =>
               <Col className="mb-2 px-1">
-              <img className="img-fluid" src={f} alt="movie picture" />
+              <img className="img-fluid" src={f} />
             </Col>
             )}
             {/* */}
