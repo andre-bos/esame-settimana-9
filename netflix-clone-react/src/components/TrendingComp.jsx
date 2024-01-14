@@ -12,40 +12,35 @@ import { endPoint } from '../data/ApiData';
 export default class TrendingComp extends Component {
 
   state = {
-    film: []
+    filmPosters: [],
+    filmTitles: []
   }
 
   componentDidMount() {
     fetch(endPoint)
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then((oggettoFilm) => this.setState({ 
+      filmPosters: oggettoFilm.Search.map((f) => f.Poster),
+      filmTitles: oggettoFilm.Search.map((f) => f.Title)
+    }))
     .catch(err => console.log(err))
   }
   
   render() {
+    console.log(this)
     return (
       <div>
         <h4 className='px-4 text-white'>Trending Now</h4>
         <Container fluid className="mb-4 no-gutters text-center px-5">
           <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6">
-            <Col className="mb-2 px-1">
-              <img className="img-fluid" src={img1} alt="movie picture" />
+
+            {this.state.filmPosters.map(f =>
+              <Col className="mb-2 px-1">
+              <img className="img-fluid" src={f} alt="movie picture" />
             </Col>
-            <Col className="mb-2 px-1">
-              <img className="img-fluid" src={img2} alt="movie picture" />
-            </Col>
-            <Col className="mb-2 px-1">
-              <img className="img-fluid" src={img3} alt="movie picture" />
-            </Col>
-            <Col className="mb-2 px-1">
-              <img className="img-fluid" src={img4} alt="movie picture" />
-            </Col>
-            <Col className="mb-2 px-1">
-              <img className="img-fluid" src={img5} alt="movie picture" />
-            </Col>
-            <Col className="mb-2 px-1">
-              <img className="img-fluid" src={img6} alt="movie picture" />
-            </Col>
+            )}
+            {/* */}
+            
           </Row>
         </Container>
       </div>
