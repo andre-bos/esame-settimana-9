@@ -2,8 +2,7 @@ import './App.css';
 import NavigationBar from './components/NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyGenres from './components/Generi';
-import TrendingComp from './components/TrendingComp';
-import WatchAgain from './components/WatchAgain';
+import FilmRow from './components/FilmRow';
 import AppFooter from './components/AppFooter';
 
 document.body.style.backgroundColor = "rgb(33, 37, 41)";
@@ -16,8 +15,8 @@ function App() {
       </header>
       <main>
         <MyGenres />
-        <TrendingComp />
-        <WatchAgain />
+        <FilmRow search="harry%20potter" titolo="Harry Potter"/>
+        <FilmRow search="Bridget%20Jones" titolo="Il diario di Bridget Johnes"/>
       </main>
       <footer>
         <AppFooter />
