@@ -10,16 +10,22 @@ document.body.style.backgroundColor = "rgb(33, 37, 41)";
 
 function App() {
 
-  const [setQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   return (
     <div className="App">
       <header>
-        <NavigationBar />
+        <NavigationBar onSearch={handleSearch} />
       </header>
       <main>
         <MyGenres />
-        <FilmRow search="harry%20potter" titolo="Harry Potter"/>
+        {searchQuery && (
+          <FilmRow search={searchQuery} titolo={"Risultati di ricerca per: " + searchQuery}/>
+        )}
         <FilmRow search="Bridget%20Jones" titolo="Il diario di Bridget Johnes"/>
       </main>
       <footer>

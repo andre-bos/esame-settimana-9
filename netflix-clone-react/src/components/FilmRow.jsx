@@ -1,42 +1,38 @@
-import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react'
+import SingleFilm from './SingleFilm'
+import { Container, Row } from 'react-bootstrap';
 
-const baseEndpoint = 'http://www.omdbapi.com/?apikey=2a543a16&s=';
+export default function FilmRow({search, titolo}) {
 
-class FilmRow extends Component {
-  state = {
-    datiFilm: []
-  };
+  const [filmData, setFilmData] = useState([]);
 
-  componentDidMount() {
-    const fullEndpoint = `${baseEndpoint}${this.props.search}`;
-    
-    fetch(fullEndpoint)
+  useEffect(() => {
+    if (search.length < 3) {
+      setFilmData(null);
+      return;
+    }
+
+    const url = `http://www.omdbapi.com/?apikey=2a543a16&s=${search}`;
+    console.log(url)
+    fetch(url)
       .then(response => response.json())
-      .then(oggettoFilm => {
-        this.setState({
-          datiFilm: oggettoFilm.Search
-        }, () => console.log(this.state)) // Stampa lo stato dopo averlo aggiornato
-      })
-      .catch(err => console.log(err));
-  }
+      .then(data => setFilmData(data.Search))
+      .catch(error => console.error(error));
+  }, [search]);
 
-  render() {
-    return (
-      <div>
-        <h4 className='px-4 text-white'>{this.props.titolo}</h4>
+  return (
+     <div>
+        <h4 className='px-4 text-white'>{titolo}</h4>
         <Container fluid className='mb-4 no-gutters text-center px-5'>
           <Row className='row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6'>
-            {this.state.datiFilm.map(f => (
-              <Col className='mb-2 px-1' key={f.imdbID}>
-                <img className='img-fluid img-size' src={f.Poster} alt={f.Title} />
-              </Col>
-            ))}
+            {search.length < 3 ? (
+              <p className='text-white'>Devi digitare almeno tre caratteri</p>
+            ) : (
+              filmData && filmData.map(film => <SingleFilm key={film.imdbID} film={film}/>)
+            )}
           </Row>
         </Container>
       </div>
-    );
-  }
+  )
 }
 
-export default FilmRow;
