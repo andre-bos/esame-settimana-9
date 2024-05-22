@@ -1,9 +1,27 @@
-import React from 'react'
-import { Navbar, Nav} from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
 import logo from '../assets/logo.png';
 import { FaBell, FaSearch, FaUser } from "react-icons/fa";
 
-export default function NavigationBar() {
+export default function NavigationBar({onSearch}) {
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  }
+
+  const handleSearchClick = () => {
+    setIsSearchOpen(!isSearchOpen)
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchQuery);
+    setIsSearchOpen(false);
+    setSearchQuery('')
+  }
   return (
     <Navbar expand="lg" variant="dark" className="justify-content-between px-3">
     <div className="d-flex align-items-center font-weight-bold"> 
@@ -21,7 +39,12 @@ export default function NavigationBar() {
     </div>
 
     <div className="d-flex align-items-center justify-content-between" style={{width: "7%"}}>
-        <Navbar.Text><FaSearch /></Navbar.Text>
+        <Navbar.Text onClick={handleSearchClick}><FaSearch /></Navbar.Text>
+        {isSearchOpen && (
+          <Form inline="true" onSubmit={handleSearchSubmit}>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" value={searchQuery} onChange={handleInputChange} />
+          </Form>
+        )}
         <div id="kids">KIDS</div>
         <Navbar.Text><FaBell /></Navbar.Text>
         <Navbar.Text><FaUser /></Navbar.Text>

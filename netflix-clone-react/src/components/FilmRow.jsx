@@ -13,11 +13,11 @@ class FilmRow extends Component {
     
     fetch(fullEndpoint)
       .then(response => response.json())
-      .then(oggettoFilm =>
+      .then(oggettoFilm => {
         this.setState({
           datiFilm: oggettoFilm.Search
-        })
-      )
+        }, () => console.log(this.state)) // Stampa lo stato dopo averlo aggiornato
+      })
       .catch(err => console.log(err));
   }
 

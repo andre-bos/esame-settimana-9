@@ -4,10 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyGenres from './components/Generi';
 import FilmRow from './components/FilmRow';
 import AppFooter from './components/AppFooter';
+import { useState } from 'react';
 
 document.body.style.backgroundColor = "rgb(33, 37, 41)";
 
 function App() {
+
+  const [setQuery, setSearchQuery] = useState('');
+
   return (
     <div className="App">
       <header>
