@@ -26,7 +26,8 @@ function App() {
         {searchQuery && (
           <FilmRow search={searchQuery} titolo={"Risultati di ricerca per: " + searchQuery}/>
         )}
-        <FilmRow search="Bridget%20Jones" titolo="Il diario di Bridget Johnes"/>
+        <FilmRow search="Harry%20Potter" titolo="Harry Potter"/>
+        <FilmRow search="Indiana%20Jones" titolo="Indiana Jones Saga" />
       </main>
       <footer>
         <AppFooter />

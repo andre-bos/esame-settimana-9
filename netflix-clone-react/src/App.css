@@ -57,15 +57,10 @@ footer {
   font-size: 0.6em;
 }
 
-.col img {
+.transform-over {
   transition: transform 0.2s;
 }
 
-.col img:hover {
+.scale-over {
   transform: scale(1.1);
-}
-
-.img-size {
-  height: 250px;
-  width: 180px;
 }
